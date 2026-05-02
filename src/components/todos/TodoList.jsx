@@ -32,16 +32,16 @@ export default function TodoList({ setTodos, todos }) {
           <section className="max-w-2xl mx-auto space-y-4">
             {todos.map((todo) => (
               <div
-                key={todo._id}
+                key={todo?._id}
                 className="flex items-center justify-between bg-white rounded-xl shadow-sm hover:shadow-md transition duration-200 p-4"
               >
                 <input
                   type="checkbox"
-                  checked={todo.isCompleted}
+                  checked={todo?.isCompleted}
                   className="w-5 h-5 accent-blue-500 cursor-pointer"
                   onChange={() => handleTogole(todo._id, todo.isCompleted)}
                 />
-                <span>{todo.title}</span>
+                <span>{todo?.title}</span>
                 <div className="flex gap-2">
                   {/* <button>edit</button> */}
                   <EditTodo todos={todos} setTodos={setTodos} todo={todo} editingID={editingID} setEditingID={setEditingID}/>
