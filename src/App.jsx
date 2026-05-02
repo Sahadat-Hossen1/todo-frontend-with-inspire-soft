@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import getTodos from "./services/getTodos";
 import AddTodo from "./components/todos/AddTodo";
+import TodoList from "./components/todos/TodoList";
 // import Api_EndPoints from "./API_Endpoints";
 
 export default function App() {
@@ -28,7 +29,8 @@ export default function App() {
       {/* there will be an add todo form */}
     <AddTodo setTodos={setTodos} todos={todos}/>
       {/* there will be a list of todos */}
-      <h1>todos length: {todos.length} </h1>
+      <h1 className="text-center text-3xl font-bold text-red-500 py-3">Todo List </h1>
+      <TodoList setTodos={setTodos} todos={todos}/>
     </div>
   );
 }
