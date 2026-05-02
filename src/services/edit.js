@@ -1,11 +1,11 @@
 import Api_EndPoints from "../API_Endpoints";
 
-const toggleChecked = async (_id, newStatus) => {
+const edit= async (_id, updatedTitle) => {
   try {
     const res = await fetch(`${Api_EndPoints.Todos_API}/${_id}`, {
       method: "PUT",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify({ isCompleted: newStatus })
+      body: JSON.stringify({ title: updatedTitle }),
     });
     if (!res.ok) {
       throw new Error("Something went wrong while updating todo");
@@ -16,4 +16,4 @@ const toggleChecked = async (_id, newStatus) => {
     console.log(err.message);
   }
 };
-export default toggleChecked;
+export default edit

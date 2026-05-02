@@ -1,6 +1,6 @@
 import Api_EndPoints from "../API_Endpoints";
 
-const DeleteTodo = async (_id) => {
+const Delete = async (_id) => {
     try {
         const res = await fetch(`${Api_EndPoints.Todos_API}/${_id}`, {
             method: "DELETE",
@@ -18,4 +18,4 @@ const DeleteTodo = async (_id) => {
         throw err; // Re-throw the error so it can be caught by the caller
     }
 }
-export default DeleteTodo;
+export default Delete;

@@ -1,19 +1,12 @@
-import DeleteTodo from "../../services/DeleteTodo";
+import { useState } from "react";
 import toggleChecked from "../../services/toggleChecked";
+import DeleteTodo from "../todoButtons/DeleteTodo";
 import FilterTodo from "../todoButtons/FilterTodo";
+import EditTodo from "../todoButtons/EditTodo";
 
 export default function TodoList({ setTodos, todos }) {
-  // handle delete
-  const handleDelete = async (_id) => {
-    try {
-      await DeleteTodo(_id);
-      setTodos(todos.filter((todo) => todo._id !== _id));
-    } catch (error) {
-      console.error("Failed to delete todo:", error.message);
-      alert("Failed to delete todo. Please try again.");
-    }
-  };
-
+    const[editingID,setEditingID]=useState(null)
+  
   // handle togole iscompleted
   const handleTogole = async (_id, currentStatus) => {
     const updatedStatus = !currentStatus;
@@ -28,6 +21,8 @@ export default function TodoList({ setTodos, todos }) {
       console.error("Failed to toggle todo status:", err.message);
     }
   };
+//   handle edit 
+
   return (
     <div>
       <FilterTodo />
@@ -44,12 +39,13 @@ export default function TodoList({ setTodos, todos }) {
                   type="checkbox"
                   checked={todo.isCompleted}
                   className="w-5 h-5 accent-blue-500 cursor-pointer"
-                  onChange={(e) => handleTogole(todo._id, todo.isCompleted)}
+                  onChange={() => handleTogole(todo._id, todo.isCompleted)}
                 />
                 <span>{todo.title}</span>
                 <div className="flex gap-2">
-                  <button>edit</button>
-                  <button onClick={() => handleDelete(todo._id)}>delete</button>
+                  {/* <button>edit</button> */}
+                  <EditTodo todos={todos} setTodos={setTodos} todo={todo} editingID={editingID} setEditingID={setEditingID}/>
+                  <DeleteTodo todo={todo} setTodos={setTodos} todos={todos} />
                 </div>
               </div>
             ))}
