@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toggleChecked from "../../services/toggleChecked";
 import DeleteTodo from "../todoButtons/DeleteTodo";
-import FilterTodo from "../todoButtons/FilterTodo";
+// import FilterTodo from "../todoButtons/FilterTodo";
 import EditTodo from "../todoButtons/EditTodo";
 
 export default function TodoList({ setTodos, todos }) {
@@ -25,7 +25,7 @@ export default function TodoList({ setTodos, todos }) {
 
   return (
     <div>
-      <FilterTodo />
+      {/* <FilterTodo /> */}
       {/* todo list */}
       <div className="min-h-screen bg-gray-100 p-6">
         {todos.length > 0 ? (

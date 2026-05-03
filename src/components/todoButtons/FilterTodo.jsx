@@ -1,7 +1,5 @@
-import { useState } from "react";
 
-export default function FilterTodo() {
-      const [currentFilter, setCurrentFilter] = useState("all");
+export default function FilterTodo({currentFilter,setCurrentFilter}) {
 
   return (
  <div className="flex justify-center my-3">
